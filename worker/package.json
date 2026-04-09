@@ -1,0 +1,28 @@
+{
+  "name": "cloudmail-pro-worker",
+  "version": "1.0.0",
+  "description": "CloudMail Pro - Cloudflare Worker 后端",
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "wrangler d1 migrations apply cloudmail-pro-db",
+    "db:migrate:local": "wrangler d1 migrations apply cloudmail-pro-db --local",
+    "db:studio": "drizzle-kit studio",
+    "lint": "eslint src/",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "hono": "^4.6.0",
+    "drizzle-orm": "^0.36.0",
+    "nanoid": "^5.0.0",
+    "postal-mime": "^2.3.0"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20241205.0",
+    "drizzle-kit": "^0.30.0",
+    "typescript": "^5.7.0",
+    "wrangler": "^3.99.0"
+  }
+}

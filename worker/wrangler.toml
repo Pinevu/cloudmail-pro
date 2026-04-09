@@ -1,0 +1,51 @@
+# CloudMail Pro Worker 配置
+name = "cloudmail-pro"
+main = "src/index.ts"
+compatibility_date = "2024-12-01"
+compatibility_flags = ["nodejs_compat"]
+
+# ============ D1 数据库 ============
+[[d1_databases]]
+binding = "DB"
+database_name = "cloudmail-pro-db"
+database_id = "YOUR_D1_DATABASE_ID"
+migrations_dir = "drizzle"
+
+# ============ KV 命名空间 ============
+[[kv_namespaces]]
+binding = "KV"
+id = "YOUR_KV_NAMESPACE_ID"
+
+# ============ R2 存储桶 ============
+[[r2_buckets]]
+binding = "R2"
+bucket_name = "cloudmail-attachments"
+
+# ============ 邮件路由 ============
+[[routes]]
+pattern = "mail.yourdomain.com/*"
+zone_name = "yourdomain.com"
+
+# ============ 环境变量 ============
+[vars]
+DOMAIN = "yourdomain.com"
+ENV = "production"
+
+# ============ Email 绑定（接收邮件） ============
+# 在 Cloudflare Dashboard 中配置 Email Routing:
+# 1. 添加域名
+# 2. 配置 Catch-all 路由指向此 Worker
+# 3. 设置 Resend 发件域名
+
+# ============ 开发环境 ============
+[env.dev]
+name = "cloudmail-pro-dev"
+[env.dev.vars]
+DOMAIN = "localhost"
+ENV = "development"
+
+[[env.dev.d1_databases]]
+binding = "DB"
+database_name = "cloudmail-pro-db-dev"
+database_id = "YOUR_DEV_D1_DATABASE_ID"
+migrations_dir = "drizzle"

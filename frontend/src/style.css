@@ -1,0 +1,115 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============ 全局样式 ============ */
+:root {
+  --sidebar-width: 260px;
+  --header-height: 64px;
+  --primary-color: #3b82f6;
+  --primary-hover: #2563eb;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ============ 滚动条美化 ============ */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #475569;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #64748b;
+}
+
+/* ============ 邮件列表项动画 ============ */
+.mail-item {
+  @apply transition-all duration-200 ease-in-out;
+}
+
+.mail-item:hover {
+  @apply bg-gray-50 dark:bg-gray-800/50;
+  transform: translateX(2px);
+}
+
+/* ============ 新邮件闪烁提示 ============ */
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.unread-dot {
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+/* ============ 渐变背景 ============ */
+.gradient-bg {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.gradient-bg-blue {
+  background: linear-gradient(135deg, #1e3a5f 0%, #2563eb 100%);
+}
+
+.gradient-bg-dark {
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+}
+
+/* ============ 玻璃拟态 ============ */
+.glass {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.dark .glass {
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* ============ 登录背景动画 ============ */
+@keyframes float {
+  0% { transform: translateY(0) rotate(0deg); }
+  33% { transform: translateY(-10px) rotate(5deg); }
+  66% { transform: translateY(5px) rotate(-3deg); }
+  100% { transform: translateY(0) rotate(0deg); }
+}
+
+.float-animation {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* ============ Naive UI 主题覆盖 ============ */
+.n-card {
+  border-radius: 12px !important;
+}
+
+.n-button {
+  border-radius: 8px !important;
+}
+
+.n-input {
+  border-radius: 8px !important;
+}
