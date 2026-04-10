@@ -1,5 +1,5 @@
 /**
- * CloudMail Pro - Worker 入口
+ * CloudMail Pro Worker 入口
  * 基于 Hono 框架的 Cloudflare Worker 邮件服务
  */
 import { Hono } from 'hono'
